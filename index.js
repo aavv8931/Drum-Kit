@@ -38,15 +38,16 @@ for (var i = 0; i < document.querySelectorAll(".drum").length; i++) {
             default:
                 break;
         }
-    }
 
+        buttonAnimation(buttonInnerHTML);
+    }
 }
 // Detecting Keyboard Press
 
 document.addEventListener("keydown", function(event){
 
     var keyDown = event.key;
-
+    buttonAnimation(keyDown);
     switch (keyDown) {
         case "w":
             var tom1 = new Audio("sounds/tom-1.mp3");
@@ -79,6 +80,17 @@ document.addEventListener("keydown", function(event){
         default:
             break;
     }
-    
-
 })
+
+//Button Animations
+
+function buttonAnimation(currentKey) {
+   var activeButtom = document.querySelector("."+currentKey);
+
+   activeButtom.classList.add("pressed");
+
+   setTimeout(() => {
+       activeButtom.classList.remove("pressed")
+   }, 100);
+
+}
